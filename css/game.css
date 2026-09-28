@@ -1,0 +1,596 @@
+/* =========================
+   Base & Layout
+   ========================= */
+
+:root {
+    --bg: #0f1115;
+    --surface: #171a21;
+    --surface-2: #1f2430;
+    --text: #e8eaf0;
+    --text-muted: #a9b0c0;
+    --accent: #7c5cff;
+    --accent-hover: #6a45e6;
+    --success: #2ecc71;
+    --error: #ff5252;
+    --warning: #ffb020;
+    --border: #2a3142;
+    --shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    --radius: 10px;
+    --radius-sm: 6px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+}
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 16px;
+}
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* =========================
+   Header & Footer
+   ========================= */
+
+header {
+    background: linear-gradient(180deg, var(--surface), var(--bg));
+    border-bottom: 1px solid var(--border);
+    padding: 14px 0;
+    margin-bottom: 24px;
+}
+
+header .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.35rem;
+    letter-spacing: 0.3px;
+}
+
+.user-info {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+footer {
+    margin-top: 40px;
+    padding: 20px 0 40px;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+/* =========================
+   Common UI: Alerts, Forms, Buttons
+   ========================= */
+
+.alert {
+    padding: 10px 12px;
+    border-radius: var(--radius-sm);
+    margin-bottom: 16px;
+    font-size: 0.95rem;
+    border: 1px solid transparent;
+}
+
+.alert-success {
+    background: rgba(46, 204, 113, 0.12);
+    color: #9ff0c2;
+    border-color: rgba(46, 204, 113, 0.35);
+}
+
+.alert-error {
+    background: rgba(255, 82, 82, 0.12);
+    color: #ff9e9e;
+    border-color: rgba(255, 82, 82, 0.35);
+}
+
+form {
+    display: grid;
+    gap: 12px;
+    max-width: 420px;
+}
+
+label {
+    display: grid;
+    gap: 6px;
+    font-size: 0.95rem;
+    color: var(--text-muted);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    outline: none;
+}
+
+input:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px rgba(124, 92, 255, 0.25);
+}
+
+button {
+    padding: 10px 14px;
+    border-radius: var(--radius-sm);
+    border: none;
+    background: var(--accent);
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s ease, transform 0.05s ease;
+}
+
+button:hover {
+    background: var(--accent-hover);
+    text-decoration: none;
+}
+
+button:active {
+    transform: translateY(1px);
+}
+
+.btn-link {
+    display: inline-block;
+    padding: 10px 14px;
+    border-radius: var(--radius-sm);
+    background: transparent;
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    text-align: center;
+    font-weight: 600;
+}
+
+.btn-link:hover {
+    background: rgba(124, 92, 255, 0.08);
+    text-decoration: none;
+}
+
+/* =========================
+   Auth Pages (login/register/profile)
+   ========================= */
+
+.auth-box {
+    max-width: 420px;
+    margin: 0 auto;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px 22px;
+    box-shadow: var(--shadow);
+}
+
+.auth-box h2 {
+    margin-top: 0;
+    margin-bottom: 14px;
+    font-size: 1.25rem;
+}
+
+.auth-note {
+    margin-top: 14px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    text-align: center;
+}
+
+.profile-stats ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 8px;
+}
+
+.profile-stats,
+.profile-edit,
+.profile-password {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+    margin-bottom: 20px;
+}
+
+.profile-edit,
+.profile-password {
+    max-width: 520px;
+}
+
+.profile-edit h2,
+.profile-password h2 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-size: 1.15rem;
+}
+
+/* =========================
+   Lobby (index.php)
+   ========================= */
+
+.lobby-intro {
+    margin-bottom: 20px;
+    color: var(--text-muted);
+}
+
+.room-block {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
+}
+
+.room-block h2 {
+    margin-top: 0;
+    margin-bottom: 6px;
+    font-size: 1.2rem;
+}
+
+.room-meta,
+.room-desc {
+    margin: 6px 0 10px;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.user-team-notice {
+    background: rgba(124, 92, 255, 0.08);
+    border: 1px solid rgba(124, 92, 255, 0.35);
+    border-radius: var(--radius-sm);
+    padding: 10px 12px;
+    margin: 12px 0;
+    font-size: 0.95rem;
+}
+
+.create-team-form,
+.existing-teams {
+    margin-top: 14px;
+}
+
+.create-team-form h3,
+.existing-teams h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.05rem;
+}
+
+.team-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 8px;
+}
+
+.team-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 8px 10px;
+    font-size: 0.95rem;
+}
+
+.team-name {
+    flex: 1;
+}
+
+/* =========================
+   Game Page (room.php)
+   ========================= */
+
+.game-status {
+    display: grid;
+    gap: 8px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 12px 14px;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+}
+
+.game-over {
+    color: var(--warning);
+    font-weight: 600;
+}
+
+.puzzle-section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    margin-bottom: 20px;
+}
+
+.puzzle-section h2,
+.puzzle-section h3 {
+    margin-top: 0;
+    margin-bottom: 8px;
+}
+
+.puzzle-meta {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 12px;
+}
+
+.puzzle-question {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 12px;
+    margin-bottom: 14px;
+    font-size: 1rem;
+    white-space: pre-wrap;
+}
+
+.answer-form,
+.hints-section {
+    margin-top: 14px;
+}
+
+.result-box {
+    margin-top: 8px;
+    font-size: 0.95rem;
+}
+
+.hints-section #hints-list {
+    margin-top: 10px;
+    display: grid;
+    gap: 8px;
+}
+
+.hints-section #hints-list .hint-item {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 8px 10px;
+    font-size: 0.95rem;
+}
+
+/* Chat */
+
+.chat-section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+}
+
+.chat-section h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+.chat-messages {
+    max-height: 260px;
+    overflow-y: auto;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    background: var(--surface-2);
+    padding: 8px 10px;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+}
+
+.chat-message {
+    margin-bottom: 6px;
+}
+
+.chat-meta {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-right: 6px;
+}
+
+.chat-form {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 8px;
+    max-width: none;
+}
+
+.chat-form input[type="text"] {
+    width: 100%;
+}
+
+/* =========================
+   Leaderboard (leaderboard.php)
+   ========================= */
+
+.filters {
+    margin-bottom: 18px;
+}
+
+.filter-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    max-width: none;
+}
+
+.filter-form label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-muted);
+    font-size: 0.95rem;
+}
+
+.filter-form select {
+    padding: 8px 10px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--text);
+    outline: none;
+}
+
+.your-best {
+    background: rgba(124, 92, 255, 0.08);
+    border: 1px solid rgba(124, 92, 255, 0.35);
+    border-radius: var(--radius);
+    padding: 12px 14px;
+    margin-bottom: 18px;
+}
+
+.your-best h2 {
+    margin-top: 0;
+    margin-bottom: 6px;
+    font-size: 1.1rem;
+}
+
+.leaderboard h2 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+}
+
+.leaderboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    font-size: 0.95rem;
+}
+
+.leaderboard-table th,
+.leaderboard-table td {
+    padding: 10px 12px;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+
+.leaderboard-table th {
+    background: var(--surface-2);
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+}
+
+.leaderboard-table tr:last-child td {
+    border-bottom: none;
+}
+
+.leaderboard-table .your-row {
+    background: rgba(124, 92, 255, 0.1);
+}
+
+.pagination {
+    margin-top: 14px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.pagination a {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.page-info {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+/* =========================
+   Responsive Tweaks
+   ========================= */
+
+@media (max-width: 700px) {
+    header .container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .leaderboard-table {
+        font-size: 0.85rem;
+    }
+
+    .leaderboard-table th,
+    .leaderboard-table td {
+        padding: 8px 6px;
+    }
+
+    .chat-form {
+        grid-template-columns: 1fr;
+    }
+
+    .filter-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .filter-form label {
+        width: 100%;
+    }
+}
+footer {
+    margin-top: 40px;
+    padding: 20px 0 40px;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+}
+
+.footer-nav {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.footer-nav a {
+    color: var(--accent);
+    text-decoration: none;
+}
+
+.footer-nav a:hover {
+    text-decoration: underline;
+}
